@@ -1,0 +1,33 @@
+.ts-goal__header {
+    color: var(--ring-heading-color);
+}
+
+.ts-goal__description {
+    color: var(--ring-text-color);
+}
+
+.ts-goal__progress {
+    height: 20px;
+    color: var(--ring-text-color);
+    border: 1px solid green;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ts-goal__progress_success-line {
+    position: absolute;
+    background-color: var(--ring-success-color);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.ts-goal__progress_info {
+    position: relative;
+    color: var(--ring-text-color);
+}
