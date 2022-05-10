@@ -28,6 +28,6 @@
   },
   "scripts": {
     "build": "webpack && zip -m ./build/frontend-widget.zip ./build/*",
-    "start": "webpack-dev-server ---hot --mode development"
+    "start": "webpack-dev-server --hot --mode development"
   }
 }
