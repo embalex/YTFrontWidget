@@ -12,6 +12,8 @@
       {
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"
-      }]
+      }
+    ],
+    "import/prefer-default-export": "off"
   }
 }

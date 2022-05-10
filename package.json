@@ -22,11 +22,12 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "hub-dashboard-addons": "^0.2.10",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
   "scripts": {
     "build": "webpack && zip -m ./build/frontend-widget.zip ./build/*",
-    "start": "webpack-dev-server --mode development --port 3000"
+    "start": "webpack-dev-server ---hot --mode development"
   }
 }

@@ -20,9 +20,10 @@ const webpackConfig = (env, options) => ({
     ],
   },
   devServer: {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
+    https: true,
+    historyApiFallback: true,
+    allowedHosts: 'all',
+    port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -36,11 +37,7 @@ const webpackConfig = (env, options) => ({
       patterns: [{ from: './static', to: './' }],
     }),
   ],
-  performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
-  },
+  ...(options.mode === 'development' ? { devtool: 'source-map' } : null),
 });
 
 module.exports = webpackConfig;

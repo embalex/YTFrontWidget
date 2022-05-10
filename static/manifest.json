@@ -8,4 +8,8 @@
     "YouTrack": ">=2018.1",
     "Hub": ">=2018.1"
   },
+  "dependencies": {
+    "YouTrack": ">=2018.1",
+    "Hub": ">=2018.1"
+  }
 }

@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import DashboardWidget from './DashboardWidget';
+import { TSGoal } from './TSGoal';
 
-// eslint-disable-next-line react/function-component-definition
-const App:React.FC = () => <div>Hello ))</div>;
+const App:React.FC = () => {
+  const [isAppInInitProcess, setIsAppInInitProcess] = useState(true);
+
+  useEffect(() => {
+    DashboardWidget.init().then(() => {
+      setIsAppInInitProcess(false);
+    });
+  }, []);
+
+  return (
+    <div>
+      {isAppInInitProcess
+        ? <div>Loading...</div>
+        : <TSGoal />}
+    </div>
+  );
+};
 
 const element = document.getElementById('app');
 if (element === null) {
