@@ -1,14 +1,5 @@
-.ts-goal__header {
-    color: var(--ring-heading-color);
-}
-
-.ts-goal__description {
-    color: var(--ring-text-color);
-}
-
-.ts-goal__progress {
+.goal__progress {
     height: 20px;
-    color: var(--ring-text-color);
     border: 1px solid green;
     border-radius: 4px;
     position: relative;
@@ -17,7 +8,7 @@
     justify-content: center;
 }
 
-.ts-goal__progress_success-line {
+.goal__progress_success-line {
     position: absolute;
     background-color: var(--ring-success-color);
     top: 0;
@@ -27,7 +18,10 @@
     width: 100%;
 }
 
-.ts-goal__progress_info {
+.goal__progress_info {
     position: relative;
-    color: var(--ring-text-color);
+}
+
+.goal__progress_warning {
+    color: var(--ring-warning-color);
 }

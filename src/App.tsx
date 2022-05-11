@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import DashboardWidget from './DashboardWidget';
-import { TSGoal } from './TSGoal';
+import { TSGoal } from './Goals/TS';
+import { UiKitGoal } from './Goals/UiKit';
+import './App.css';
 
 const App:React.FC = () => {
   const [isAppInInitProcess, setIsAppInInitProcess] = useState(true);
@@ -16,7 +18,12 @@ const App:React.FC = () => {
     <div>
       {isAppInInitProcess
         ? <div>Loading...</div>
-        : <TSGoal />}
+        : (
+          <>
+            <TSGoal />
+            <UiKitGoal />
+          </>
+        )}
     </div>
   );
 };
