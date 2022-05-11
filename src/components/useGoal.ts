@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import DashboardWidget from '../DashboardWidget';
+import { getMonthAgoDate } from './utils';
 
 type UseGoal = {
   type: 'loading'
@@ -22,20 +23,25 @@ export const useGoal = (tag: GoalsTags):UseGoal => {
 
   useEffect(() => {
     const getDevTasks = async () => {
-      const queryAll = encodeURI(`Team: Frontend Type: {Dev Task} Tag: {${tag}}`);
-      const queryResolved = encodeURI(`Team: Frontend Type: {Dev Task} State: {Finished}, {Verified}, {Canceled} Tag: {${tag}}`);
+      const monthAgoDate = getMonthAgoDate(new Date());
+      const queryAll = `Team: Frontend Type: {Dev Task} Tag: {${tag}}`;
+      const queryResolvedAll = `Team: Frontend Type: {Dev Task} State: {Finished}, {Verified}, {Canceled} Tag: {${tag}}`;
+      const queryCreatedLastMonth = `${queryAll} created: ${monthAgoDate} .. *`;
+      const queryResolvedLastMonth = `${queryResolvedAll} resolved date: ${monthAgoDate} .. *`;
 
       try {
-        const allDevTasks = await DashboardWidget.fetch<unknown[]>(`api/issues?fields=id&query=${queryAll}`);
-        const resolvedDevTasks = await DashboardWidget.fetch<unknown[]>(`api/issues?fields=id&query=${queryResolved}`);
+        const all = await DashboardWidget.fetch<unknown[]>(`api/issues?fields=id&query=${encodeURI(queryAll)}`);
+        const resolved = await DashboardWidget.fetch<unknown[]>(`api/issues?fields=id&query=${encodeURI(queryResolvedAll)}`);
+        const createdByLastMonth = await DashboardWidget.fetch<unknown[]>(`api/issues?fields=id&query=${encodeURI(queryCreatedLastMonth)}`);
+        const resolvedByLastMonth = await DashboardWidget.fetch<unknown[]>(`api/issues?fields=id&query=${encodeURI(queryResolvedLastMonth)}`);
 
         setValue({
           type: 'data',
           data: {
-            all: allDevTasks.length,
-            resolved: resolvedDevTasks.length,
-            addedAtLastTime: 0,
-            resolvedAtLastTime: 0,
+            all: all.length,
+            resolved: resolved.length,
+            addedAtLastTime: createdByLastMonth.length,
+            resolvedAtLastTime: resolvedByLastMonth.length,
           },
         });
       } catch (e) {
