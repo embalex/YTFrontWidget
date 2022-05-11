@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import DashboardWidget from './DashboardWidget';
-import { TSGoal } from './Goals/TS';
-import { UiKitGoal } from './Goals/UiKit';
-import { SiteSpeedGoal } from './Goals/SiteSpeed';
-import { NodeSSRGoal } from './Goals/NodeSSR';
+import { Goal } from './components/Goal';
 import './App.css';
+
+const goals = [{
+  caption: 'Подключение к typescript',
+  tag: 'FE Goal TS' as const,
+}, {
+  caption: 'uiKit',
+  tag: 'FE Goal uiKit' as const,
+}, {
+  caption: 'Скорость загрузки сайта',
+  tag: 'FE Goal Site load' as const,
+}, {
+  caption: 'Node и нормальный SSR',
+  tag: 'FE Goal SSR' as const,
+}];
 
 const App:React.FC = () => {
   const [isAppInInitProcess, setIsAppInInitProcess] = useState(true);
@@ -20,14 +31,7 @@ const App:React.FC = () => {
     <div>
       {isAppInInitProcess
         ? <div>Loading...</div>
-        : (
-          <>
-            <TSGoal />
-            <UiKitGoal />
-            <SiteSpeedGoal />
-            <NodeSSRGoal />
-          </>
-        )}
+        : goals.map((goal) => <Goal className="goal" key={goal.tag} {...goal} />)}
     </div>
   );
 };
