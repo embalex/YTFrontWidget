@@ -15,12 +15,11 @@ export const GoalSummary: React.FC<Props> = ({
   : (
     <>
       <p>
-        {`За последний месяц добавлено/выполнено: ${addedAtLastTime}/${resolvedAtLastTime}.`}
+        {`За последний месяц добавлено ${addedAtLastTime}, выполнено ${resolvedAtLastTime}.`}
       </p>
-      <p>Всего:</p>
+      <p>{`Всего выполнено: ${resolved} из ${all}`}</p>
       <div className="goal__progress">
         <div className="goal__progress_success-line" style={{ width: `${(resolved * 100) / all}%` }} />
-        <div className="goal__progress_info">{`Выполнено ${resolved} из ${all}`}</div>
       </div>
     </>
   ));
