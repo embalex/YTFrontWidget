@@ -20,6 +20,9 @@ const webpackConfig = (env, options) => ({
     ],
   },
   devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     https: true,
     historyApiFallback: true,
     allowedHosts: 'all',
