@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import DashboardWidget from '../DashboardWidget';
 import { getMonthAgoDate } from './utils';
+import { GoalTag } from '../constants';
 
 type UseGoal = {
   type: 'loading'
@@ -16,9 +17,7 @@ type UseGoal = {
   };
 };
 
-type GoalsTags = 'FE Goal TS' | 'FE Goal uiKit' | 'FE Goal Site load' | 'FE Goal SSR';
-
-export const useGoal = (tag: GoalsTags):UseGoal => {
+export const useGoal = (tag: GoalTag):UseGoal => {
   const [value, setValue] = useState<UseGoal>({ type: 'loading' });
 
   useEffect(() => {

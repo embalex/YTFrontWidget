@@ -1,5 +1,3 @@
-type ParametersFetch = Parameters<typeof fetch>;
-
 type DashboardApi = {
   setTitle: (title: string)=> void;
   fetchHub: typeof fetch;

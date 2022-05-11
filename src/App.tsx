@@ -2,20 +2,21 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import DashboardWidget from './DashboardWidget';
 import { Goal } from './components/Goal';
+import { GoalTag } from './constants';
 import './App.css';
 
 const goals = [{
   caption: 'Подключение к typescript',
-  tag: 'FE Goal TS' as const,
+  tag: GoalTag.TS,
 }, {
   caption: 'uiKit',
-  tag: 'FE Goal uiKit' as const,
+  tag: GoalTag.UiKit,
 }, {
   caption: 'Скорость загрузки сайта',
-  tag: 'FE Goal Site load' as const,
+  tag: GoalTag.SiteLoad,
 }, {
   caption: 'Node и нормальный SSR',
-  tag: 'FE Goal SSR' as const,
+  tag: GoalTag.SSR,
 }];
 
 const App:React.FC = () => {
@@ -27,11 +28,17 @@ const App:React.FC = () => {
     });
   }, []);
 
+  if (isAppInInitProcess) {
+    return <div>Loading...</div>;
+  }
+
+  if (!DashboardWidget.isUserCanUseTags) {
+    return <img src="minion.svg" alt="Menion" className="menion" />;
+  }
+
   return (
     <div>
-      {isAppInInitProcess
-        ? <div>Loading...</div>
-        : goals.map((goal) => <Goal className="goal" key={goal.tag} {...goal} />)}
+      {goals.map((goal) => <Goal className="goal" key={goal.tag} {...goal} />)}
     </div>
   );
 };

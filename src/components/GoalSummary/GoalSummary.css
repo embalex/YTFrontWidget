@@ -18,10 +18,6 @@
     width: 100%;
 }
 
-.goal__progress_info {
-    position: relative;
-}
-
 .goal__progress_warning {
     color: var(--ring-warning-color);
 }
