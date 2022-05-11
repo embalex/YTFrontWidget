@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import DashboardWidget from './DashboardWidget';
 import { TSGoal } from './Goals/TS';
 import { UiKitGoal } from './Goals/UiKit';
+import { SiteSpeedGoal } from './Goals/SiteSpeed';
+import { NodeSSRGoal } from './Goals/NodeSSR';
 import './App.css';
 
 const App:React.FC = () => {
@@ -22,6 +24,8 @@ const App:React.FC = () => {
           <>
             <TSGoal />
             <UiKitGoal />
+            <SiteSpeedGoal />
+            <NodeSSRGoal />
           </>
         )}
     </div>
