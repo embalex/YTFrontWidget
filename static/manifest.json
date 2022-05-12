@@ -1,15 +1,13 @@
 {
   "key": "youtrack-frontend-widget",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "name": "Frontend global status",
   "description": "Widget shows process of destination for frontend's global goals.",
   "author": "embalex",
   "products": {
-    "YouTrack": ">=2018.1",
-    "Hub": ">=2018.1"
+    "YouTrack": ">=2018.1"
   },
   "dependencies": {
-    "YouTrack": ">=2018.1",
-    "Hub": ">=2018.1"
+    "YouTrack": ">=2018.1"
   }
 }

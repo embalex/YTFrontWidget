@@ -28,7 +28,7 @@
     "react-dom": "^18.1.0"
   },
   "scripts": {
-    "build": "webpack && zip -m ./build/frontend-widget.zip ./build/*",
+    "build": "webpack && cd ./build && zip -m frontend-widget.zip * && cd ..",
     "start": "webpack-dev-server --hot --mode development"
   }
 }
