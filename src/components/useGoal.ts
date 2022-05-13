@@ -23,8 +23,8 @@ export const useGoal = (tag: GoalTag):UseGoal => {
   useEffect(() => {
     const getDevTasks = async () => {
       const monthAgoDate = getMonthAgoDate(new Date());
-      const queryAll = `Team: Frontend Type: {Dev Task} Tag: {${tag}}`;
-      const queryResolvedAll = `Team: Frontend Type: {Dev Task} State: {Finished}, {Verified}, {Canceled} Tag: {${tag}}`;
+      const queryAll = `Team: Frontend Tag: {${tag}}`;
+      const queryResolvedAll = `Team: Frontend State: {Finished}, {Verified}, {Canceled} Tag: {${tag}}`;
       const queryCreatedLastMonth = `${queryAll} created: ${monthAgoDate} .. *`;
       const queryResolvedLastMonth = `${queryResolvedAll} resolved date: ${monthAgoDate} .. *`;
 
