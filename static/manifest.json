@@ -1,6 +1,6 @@
 {
   "key": "youtrack-frontend-widget",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "Frontend global status",
   "description": "Widget shows process of destination for frontend's global goals.",
   "author": "embalex",
