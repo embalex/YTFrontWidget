@@ -10,7 +10,7 @@
 
 .goal__progress_success-line {
     position: absolute;
-    background-color: var(--ring-success-color);
+    background-color: green;
     top: 0;
     bottom: 0;
     left: 0;
@@ -19,5 +19,5 @@
 }
 
 .goal__progress_warning {
-    color: var(--ring-warning-color);
+    color: red;
 }
