@@ -21,11 +21,15 @@ const goals = [{
 
 const App:React.FC = () => {
   const [isAppInInitProcess, setIsAppInInitProcess] = useState(true);
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
-    DashboardWidget.init().then(() => {
-      setIsAppInInitProcess(false);
-    });
+    DashboardWidget
+      .init()
+      .then(() => {
+        setIsAppInInitProcess(false);
+        DashboardWidget.registerRefreshCallback(() => { setReloadKey((value) => value + 1); });
+      });
   }, []);
 
   if (isAppInInitProcess) {
@@ -37,7 +41,7 @@ const App:React.FC = () => {
   }
 
   return (
-    <div>
+    <div key={reloadKey}>
       {goals.map((goal) => <Goal className="goal" key={goal.tag} {...goal} />)}
     </div>
   );
