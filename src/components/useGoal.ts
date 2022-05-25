@@ -3,6 +3,8 @@ import DashboardWidget from '../DashboardWidget';
 import { getMonthAgoDate } from './utils';
 import { GoalTag } from '../constants';
 
+const RELOAD_INTERVAL_MS = 5 * 60 * 1000;
+
 type UseGoal = {
   type: 'loading'
 } | {
@@ -21,6 +23,7 @@ export const useGoal = (tag: GoalTag):UseGoal => {
   const [value, setValue] = useState<UseGoal>({ type: 'loading' });
 
   useEffect(() => {
+    let timer: number | null = null;
     const getDevTasks = async () => {
       const monthAgoDate = getMonthAgoDate(new Date());
       const queryAll = `Team: Frontend Tag: {${tag}}`;
@@ -48,6 +51,15 @@ export const useGoal = (tag: GoalTag):UseGoal => {
       }
     };
     getDevTasks();
+    timer = window.setInterval(getDevTasks, RELOAD_INTERVAL_MS);
+
+    return () => {
+      if (timer === null) {
+        return;
+      }
+
+      window.clearInterval(timer);
+    };
   }, []);
 
   return value;
